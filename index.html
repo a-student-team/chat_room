@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./static/phone_style.css" media="screen and (max-width:1024px)">
+    <link rel="stylesheet" type="text/css" href="./static/pc_style.css" media="screen and (min-width:1024px)">
+    <link rel="stylesheet" type="text/css" href="./static/alert.css">
+    <script src="/static/alert.js"></script>
+    <script src="/static/jquery.min.js"></script>
+    <title>聊天室</title>
+    <style>
+        @font-face {
+            font-family: minecraft;
+            src: url("/static/minecraft.ttf");
+        }
+    </style>
+    <script src="/static/get_data_from_server.js"></script>
+
+</head>
+
+<body>
+    
+    <div id="title">
+        <br>
+        <h1>Da哥的聊天室</h1>
+        <br>
+
+    </div>
+
+    <div id="conn_list">
+        <br>
+        <br>
+    </div>
+    <div id="txt">
+        <br>
+        <br>
+        <div id="app">
+            <input id="sendMsg" type="text" />
+            <button id="submitBtn">
+                发送
+            </button>
+        </div>
+        <details id="det">
+
+            <summary id="change_name">改名</summary>
+            <div id="change_parent">
+                <input id="new_nickname">
+                <button id="change">更改</button>
+                <p>昵称:<span id="name"></span></p>
+            </div>
+
+
+        </details>
+        <div id="msg">
+            
+        </div>
+    </div>
+</body>
+
+</html>

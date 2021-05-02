@@ -1,0 +1,98 @@
+#app {
+    width: 85%;
+    height: 5%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    margin: auto;
+}
+
+#sendMsg {
+    width: 65%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    font-size: 30px;
+    position: absolute;
+    border-style: outset;
+    border-color: #ccc;
+    border-width: 5px;
+}
+
+#submitBtn {
+    width: 30%;
+    height: 100%;
+    right: 0;
+    font-size: 15px;
+    position: absolute;
+    border-style: outset;
+    border-width: 1px;
+    background: #337ab7;
+}
+
+#txt {
+    width: 100%;
+    height: 75%;
+    position: fixed;
+    margin: auto;
+    border-style: double;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#msg {
+    position: absolute;
+    width: 74%;
+    height: 75%;
+    margin: auto;
+    border: 1px solid #ccc !important;
+    padding: 14px;
+    border-radius: 16px !important;
+    font-size: 40px
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    top: 5px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+#det {
+    width: 400px;
+    height: 60px;
+    bottom: 100%;
+    margin: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+
+#new_nickname {
+    border-bottom: 5px solid #ccc !important;
+    padding: 3px;
+    border-color: #f44336 !important;
+    width: 200px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    font-size: 20px;
+}
+
+#change {
+    width: 100px;
+    height: 50px;
+    background: #ccc;
+    right: 50px;
+    position: absolute;
+    font-size: 15px;
+}
+
+.p {
+    position: absolute;
+    top: 101%
+}

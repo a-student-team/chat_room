@@ -1,0 +1,21 @@
+{
+    "apps": [
+    {
+    "name": "server",
+    "cwd": "/root/node_js",
+    "script": "server.js",
+    "log_date_format": "YYYY-MM-DD HH:mm:ss",
+    "error_file": "err/err.log",
+    "out_file": "log/output.log",
+    "pid_file": "pids/node-geo-api.pid",
+    "instances": 1,
+    
+    "min_uptime": "2s",
+    "max_restarts": 10,
+    "max_memory_restart": "100M",
+    "watch": ["./server.js", "./index.html"],
+    "exec_mode": "fork",
+    "autorestart": false
+    }
+    ]
+}

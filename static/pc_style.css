@@ -1,0 +1,186 @@
+body{
+    user-select: none;
+    background: url(https://cn.bing.com/th?id=OHR.LassenPeak_ZH-CN5435067682_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp);
+}
+
+#title{
+    background-color: rgba(11, 122, 226, 0.849);
+    text-align: center;
+}
+
+#app {
+    width: 85%;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    margin: auto;
+    font-size: 16px;
+}
+
+#sendMsg {
+    width: 70%;
+    height: 100%;
+    left: 0;
+    font-size: 18px;
+    position: absolute;
+    border-style: outset;
+    border-color: #ccc;
+    border-width: 1px;
+
+}
+#sendMsg:hover{
+    box-shadow: rgba(0, 0, 0, .1) 0 5px 10px;
+    
+}
+
+#submitBtn {
+    width: 20%;
+    height: 100%;
+    right: 0;
+    position: absolute;
+    border-style: outset;
+    border-width: 1px;
+    background: #337ab7;
+    transition: all .25s;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -o-transition: all .25s;
+    -ms-transition: all .25s;
+    padding: 10px;
+    color: white;
+
+}
+#submitBtn:hover{
+    background: #e4e4e4;
+    color: black;
+    box-shadow: rgba(0, 0, 0, .3) 0 5px 10px;
+    -webkit-box-shadow: rgba(0, 0, 0, .3) 0 5px 10px;
+    -moz-box-shadow: rgba(0, 0, 0, .3) 0 5px 10px;
+    cursor: pointer;
+    border-color: #e4e4e4;
+}
+
+#txt {
+    width: 42%;
+    height: 70%;
+    position: fixed;
+    margin: auto;
+    border-style: double;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 16px;
+    background-color: #aab7c498;
+    border-color:#337ab7;
+}
+
+#msg {
+    position: absolute;
+    width: 74%;
+    height: 75%;
+    margin: auto;
+    border: 0px solid #ccc !important;
+    padding: 14px;
+    border-radius: 16px !important;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    top: 5px;
+    overflow-x: auto;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.411);
+    transition: all .25s;
+}
+
+#msg:hover{
+    background-color: rgba(255, 255, 255, 0.808);
+}
+
+#det {
+    position: absolute;
+    left: 101%;
+    width: 300px;
+    background: #72baf8;
+}
+
+#new_nickname {
+    border-bottom: 2px solid #ccc !important;
+    padding: 3px;
+    border-color: #f44336 !important;
+    width: 150px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    font-size: 15px
+}
+
+#change {
+    width: 60px;
+    height: 30px;
+    right: 40px;
+    border-style: outset;
+    border-width: 1px;
+    background: #337ab7;
+    transition: all .25s;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -o-transition: all .25s;
+    -ms-transition: all .25s;
+    border-color: #337ab7;
+    color: white;
+}
+
+#change:hover{
+    background: #e4e4e4;
+    color: black;
+    box-shadow: rgba(0, 0, 0, .3) 0 5px 10px;
+    -webkit-box-shadow: rgba(0, 0, 0, .3) 0 5px 10px;
+    -moz-box-shadow: rgba(0, 0, 0, .3) 0 5px 10px;
+    cursor: pointer;
+    border-color: #e4e4e4;
+}
+
+.p {
+    position: absolute;
+    top: 101%;
+}
+
+#conn_list {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 15%;
+    padding-left: 5px;
+    padding-top: 4px;
+    margin: auto;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-color:#337ab7;
+    border-style: solid;
+    border-width: 1px;
+    height: 300px;
+    width: 150px;
+    background-color:#e7e9ebd7;
+
+
+}
+
+#change_name{
+    position: relative;
+    background: #72baf8;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all .25s;
+}
+#change_name:hover{
+    background: #ccc;
+    color: black;
+}
+
+#change_parent{
+    text-align: center;
+}

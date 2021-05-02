@@ -1,0 +1,82 @@
+//在页面显示聊天内容
+var uuid;
+function showMessage(data, type) {
+    if (type == "name") {
+        $("#name").html(data);
+    } else if (type == "uuid") {
+        uuid = data;
+    } else if (type == "list") {
+        var ch;
+        $("#conn_list").empty();
+        for (var i in data){
+            ch = $("<div></div>").html(data[i])
+            $("#conn_list").append(ch);
+
+        }
+    } else {
+     
+        var div = $("<div></div>");
+        
+        if (type == "enter") {
+            div.css("color","blue")
+            div.html(data["nick name"]+ "进来了");
+        } else if (type == "leave") {
+            div.css("color","red")
+            div.html(data["nick name"]+ "离开了")
+        } else if (type == "change name") {
+            div.html(data["nick name"] + "将昵称改为" + data["message"])
+        } else {
+            div.html(data["nick name"] + " 说： " + data["message"])
+        }
+        let msg = $('#msg');
+        msg.append(div);
+        msg.scrollTop(document.getElementById("msg").scrollHeight); 
+    }
+}
+
+//新建一个websocket
+var websocket = new WebSocket("ws://www.dage.world:3101");
+//打开websocket连接
+
+websocket.onopen = function () {
+    console.log('已经连上服务器----')
+    function send() {
+        var txt = $("#sendMsg").val();
+        if (txt) {
+            //向服务器发送数据
+            websocket.send(JSON.stringify({"type":"message", "value": txt, "uuid": uuid}));
+            $("#sendMsg").val("");
+        } else {
+            warning_prompt("消息不能为空")
+        }
+    }
+    
+    $("#change").click(function () {
+        let new_name = $("#new_nickname");
+        if (new_name.val() == "") {
+            warning_prompt("昵称不能为空！")
+        } else {
+            websocket.send(JSON.stringify({"type":"nick name","value": new_name.val(), "uuid": uuid}))
+        }
+    })
+    
+    $("#submitBtn").click(send);
+    $("#sendMsg").keydown (function (event) {
+        if (event.keyCode == 13) {
+            send()
+        }
+    })
+
+    setInterval(function () {console.log("aaa");websocket.send(JSON.stringify({"type": "heart", value: "", "uuid": uuid}));}, 1000);
+}
+
+//关闭连接
+websocket.onclose = function () {
+    console.log("websocket close");
+}
+//接收服务器返回的数据
+websocket.onmessage = function (e) {
+    var mes = JSON.parse(e.data);
+    
+    showMessage(mes.data, mes.type);
+}
