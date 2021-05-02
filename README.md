@@ -1,5 +1,5 @@
-# chat_room
-无聊瞎搞
+# chat_room  
+无聊纯属瞎搞
 ---
 # 编写语言
 * node js
