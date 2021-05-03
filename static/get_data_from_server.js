@@ -1,4 +1,4 @@
-const { lock } = require("lockfile");
+
 
 //在页面显示聊天内容
 var uuid;
