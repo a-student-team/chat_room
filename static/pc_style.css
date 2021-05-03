@@ -147,13 +147,15 @@ body{
     position: absolute;
     top: 101%;
 }
-
-#conn_list {
+#conn_list{
+    right: 0;
+}
+#conn_list_parent {
     position:absolute;
     
     right: 0;
     width: 15%;
-    height: 100%;
+    height: 80%;
     
 
     padding-left: 5px;
@@ -162,9 +164,11 @@ body{
     overflow-x: auto;
     overflow-y: auto;
 
-    background-color:#e7e9ebd7;
-
-
+    background-color:#e7e9eb8e;
+    transition: all .25s;
+}
+#conn_list_parent:hover{
+    background-color: #e7e9ebea;
 }
 
 #change_name{
