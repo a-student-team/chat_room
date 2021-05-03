@@ -1,5 +1,7 @@
 //在页面显示聊天内容
 var uuid;
+var websocket;
+var lockOfConn = false;
 function showMessage(data, type) {
     if (type == "name") {
         $("#name").html(data);
@@ -33,13 +35,42 @@ function showMessage(data, type) {
         msg.scrollTop(document.getElementById("msg").scrollHeight); 
     }
 }
+$(document).ready(function(){
+    //新建一个websocket
+    //打开websocket连接
+    function createConnection() {
+        if (!lockOfConn) {
+            websocket = new WebSocket("ws://www.dage.world:3101");
+            websocket.onopen = function () {
+                lockOfConn = true;
+                setInterval(function () {console.log("aaa");websocket.send(JSON.stringify({"type": "heart", value: "", "uuid": uuid}));}, 5000);
+            }
+            
+            websocket.onclose = function () {
+                console.log("websocket close");
+                lockOfConn = false;
+                clearInterval();
+            }
+            //接收服务器返回的数据
+            websocket.onmessage = function (e) {
+                var mes = JSON.parse(e.data);
+                
+                showMessage(mes.data, mes.type);
+            }
+            
+            console.log('已经连上服务器----')
 
-//新建一个websocket
-var websocket = new WebSocket("ws://www.dage.world:3101");
-//打开websocket连接
+        }
+    }
 
-websocket.onopen = function () {
-    console.log('已经连上服务器----')
+
+    function closeConnection()
+    {
+        if (lockOfConn) {
+            websocket.close();
+        }
+    }
+
     function send() {
         var txt = $("#sendMsg").val();
         if (txt) {
@@ -50,7 +81,8 @@ websocket.onopen = function () {
             warning_prompt("消息不能为空")
         }
     }
-    
+
+
     $("#change").click(function () {
         let new_name = $("#new_nickname");
         if (new_name.val() == "") {
@@ -59,24 +91,13 @@ websocket.onopen = function () {
             websocket.send(JSON.stringify({"type":"nick name","value": new_name.val(), "uuid": uuid}))
         }
     })
-    
+
     $("#submitBtn").click(send);
     $("#sendMsg").keydown (function (event) {
         if (event.keyCode == 13) {
-            send()
+            send();
         }
     })
 
-    setInterval(function () {console.log("aaa");websocket.send(JSON.stringify({"type": "heart", value: "", "uuid": uuid}));}, 1000);
-}
-
-//关闭连接
-websocket.onclose = function () {
-    console.log("websocket close");
-}
-//接收服务器返回的数据
-websocket.onmessage = function (e) {
-    var mes = JSON.parse(e.data);
-    
-    showMessage(mes.data, mes.type);
-}
+    createConnection();
+});
