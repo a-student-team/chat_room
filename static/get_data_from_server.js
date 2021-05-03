@@ -1,7 +1,7 @@
 //在页面显示聊天内容
 var uuid;
 var websocket;
-var lockOfConn = true;
+var lockOfConn = false;
 function showMessage(data, type) {
     if (type == "name") {
         $("#name").html(data);
