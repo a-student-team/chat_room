@@ -39,6 +39,7 @@ function showMessage(data, type) {
         div.append(message_div);
         let msg = $('#msg');
         msg.append(div);
+        msg.append("<br/>");
         msg.scrollTop(document.getElementById("msg").scrollHeight); 
     }
 }
