@@ -50,6 +50,7 @@ $(document).ready(function(){
             websocket.onopen = function () {
                 lockOfConn = true;
                 intv = setInterval(function () {console.log("aaa");websocket.send(JSON.stringify({"type": "heart", value: "", "uuid": uuid}));}, 5000);
+                $("#state").text("在线");
             }
             
             websocket.onclose = function () {
@@ -58,6 +59,8 @@ $(document).ready(function(){
                 clearInterval(intv);
                 $("#conn_list").empty();
                 $("#name").html("");
+                $("#state").text("离线");
+
             }
             //接收服务器返回的数据
             websocket.onmessage = function (e) {
