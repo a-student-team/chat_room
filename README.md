@@ -1,5 +1,4 @@
-# chat_room  
-无聊纯属瞎搞
+# chat_room
 
 ---
 # 编写语言
