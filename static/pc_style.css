@@ -1,9 +1,9 @@
-body{
+body {
     user-select: none;
     background: url(https://cn.bing.com/th?id=OHR.LassenPeak_ZH-CN5435067682_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp);
 }
 
-#title{
+#title {
     background-color: rgba(11, 122, 226, 0.849);
     text-align: left;
     padding: 10px;
@@ -15,7 +15,7 @@ body{
     height: 40px;
     position: absolute;
     left: 0;
-    
+
     bottom: 25px;
     left: 20px;
     margin: auto;
@@ -32,9 +32,10 @@ body{
     border-color: #ccc;
 
 }
-#sendMsg:hover{
+
+#sendMsg:hover {
     box-shadow: rgba(0, 0, 0, .1) 0 5px 10px;
-    
+
 }
 
 #submitBtn {
@@ -54,7 +55,8 @@ body{
     color: white;
 
 }
-#submitBtn:hover{
+
+#submitBtn:hover {
     background: #e4e4e4;
     color: black;
     box-shadow: rgba(0, 0, 0, .3) 0 5px 10px;
@@ -71,17 +73,17 @@ body{
     left: 0;
     font-size: 16px;
     background-color: #aab7c498;
-    border-color:#337ab7;
+    border-color: #337ab7;
 }
 
 #msg {
     position: absolute;
     width: 90%;
     height: 80%;
-    
+
     border: 0px solid #ccc !important;
     padding: 14px;
-    
+
     bottom: 50px;
     left: 20px;
     right: 0;
@@ -93,7 +95,7 @@ body{
 }
 
 
-#msg:hover{
+#msg:hover {
     background-color: rgba(255, 255, 255, 0.808);
 }
 
@@ -102,7 +104,7 @@ body{
     left: 101%;
     width: 300px;
     background: #72baf8;
-    
+
 }
 
 #new_nickname {
@@ -131,7 +133,7 @@ body{
     color: white;
 }
 
-#change:hover{
+#change:hover {
     background: #e4e4e4;
     color: black;
     box-shadow: rgba(0, 0, 0, .3) 0 5px 10px;
@@ -145,16 +147,18 @@ body{
     position: absolute;
     top: 101%;
 }
-#conn_list{
+
+#conn_list {
     right: 0;
 }
+
 #conn_list_parent {
-    position:absolute;
-    
+    position: absolute;
+
     right: 0;
     width: 15%;
     height: 80%;
-    
+
 
     padding-left: 5px;
     padding-top: 4px;
@@ -162,14 +166,15 @@ body{
     overflow-x: auto;
     overflow-y: auto;
 
-    background-color:#e7e9eb8e;
+    background-color: #e7e9eb8e;
     transition: all .25s;
 }
-#conn_list_parent:hover{
+
+#conn_list_parent:hover {
     background-color: #e7e9ebea;
 }
 
-#change_name{
+#change_name {
     position: relative;
     background: #72baf8;
     padding: 10px;
@@ -177,16 +182,17 @@ body{
     cursor: pointer;
     transition: all .25s;
 }
-#change_name:hover{
+
+#change_name:hover {
     background: #ccc;
     color: black;
 }
 
-#change_parent{
+#change_parent {
     text-align: center;
 }
 
-#connect{
+#connect {
     position: relative;
     background: #72baf8;
     padding: 10px;
@@ -194,11 +200,13 @@ body{
     cursor: pointer;
     transition: all .25s;
 }
-#connect:hover{
+
+#connect:hover {
     background: #ccc;
     color: black;
 }
-#disconnect{
+
+#disconnect {
     position: relative;
     background: #72baf8;
     padding: 10px;
@@ -206,21 +214,43 @@ body{
     cursor: pointer;
     transition: all .25s;
 }
-#disconnect:hover{
+
+#disconnect:hover {
     background: #ccc;
     color: black;
 }
-input{
+
+#state{
+    font-size: 16px;
+    display: inline;
+    background-color: rgba(212, 212, 212, 0.808);
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 10px;
+    transition: all .25s;
+}
+
+#state:hover{
+    background-color: rgb(180, 237, 247);
+    -webkit-box-shadow: rgba(0,0,0,0.548) 0px 5px 10px;
+ 	-moz-box-shadow: rgba(0,0,0,0.548) 0px 5px 10px;
+	box-shadow: rgba(0, 0, 0, 0.548) 0px 5px 10px;
+}
+
+input {
     background-color: white;
     transition: all .25s;
 
 }
-input:hover{
+
+input:hover {
     background-color: rgb(209, 209, 209);
 }
-button{
-    border-width:0px;
+
+button {
+    border-width: 0px;
 }
-input{
-    border:1px solid #d2d2d2;
+
+input {
+    border: 1px solid #d2d2d2;
 }
