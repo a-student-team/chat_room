@@ -67,7 +67,7 @@ websocket.onopen = function () {
         }
     })
 
-    setInterval(function () {console.log("aaa");websocket.send(JSON.stringify({"type": "heart", value: "", "uuid": uuid}));}, 7500);
+    setInterval(function () {console.log("aaa");websocket.send(JSON.stringify({"type": "heart", value: "", "uuid": uuid}));}, 5000);
 }
 
 //关闭连接
