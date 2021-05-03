@@ -4,6 +4,7 @@
 var uuid;
 var websocket;
 var lockOfConn = false;
+var intv;
 function showMessage(data, type) {
     if (type == "name") {
         $("#name").html(data);
@@ -45,15 +46,15 @@ $(document).ready(function(){
             websocket = new WebSocket("ws://www.dage.world:3101");
             websocket.onopen = function () {
                 lockOfConn = true;
-                setInterval(function () {console.log("aaa");websocket.send(JSON.stringify({"type": "heart", value: "", "uuid": uuid}));}, 5000);
+                intv = setInterval(function () {console.log("aaa");websocket.send(JSON.stringify({"type": "heart", value: "", "uuid": uuid}));}, 5000);
             }
             
             websocket.onclose = function () {
                 console.log("websocket close");
                 lockOfConn = false;
-                clearInterval();
-                $("conn_list").empty();
-                $("name").html("");
+                clearInterval(intv);
+                $("#conn_list").empty();
+                $("#name").html("");
             }
             //接收服务器返回的数据
             websocket.onmessage = function (e) {
