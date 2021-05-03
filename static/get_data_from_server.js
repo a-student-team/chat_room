@@ -22,7 +22,8 @@ function showMessage(data, type) {
         var div = $("<div></div>");
         var time_div = $("<div></div>");
         var message_div = $("<div></div>");
-        time_div.css({"color": "rgba(20, 20, 20, 0.7)", "font-size":"8px"})
+        time_div.css({"color": "rgba(20, 20, 20, 0.7)", "font-size":"8px"});
+        time_div.text(data["time"]);
         if (type == "enter") {
             message_div.css("color","blue")
             message_div.html(data["nick name"]+ "进来了");
