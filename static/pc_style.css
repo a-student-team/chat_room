@@ -3,14 +3,14 @@ body{
     background: url(https://cn.bing.com/th?id=OHR.LassenPeak_ZH-CN5435067682_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp);
 }
 
-#title{
+#title{ /* 页面标题 */
     background-color: rgba(11, 122, 226, 0.849);
     text-align: left;
     padding: 10px;
     color: white;
 }
 
-#app {
+#app { /* 发送、输入div */
     width: 85%;
     height: 40px;
     position: absolute;
@@ -22,7 +22,7 @@ body{
     font-size: 16px;
 }
 
-#sendMsg {
+#sendMsg { /* 消息输入框 */
     width: 70%;
     height: 100%;
     left: 0;
@@ -38,7 +38,7 @@ body{
     
 }
 
-#submitBtn {
+#submitBtn { /* 消息发送按钮 */
     width: 20%;
     height: 100%;
     right: 0;
@@ -65,7 +65,7 @@ body{
     border-color: #e4e4e4;
 }
 
-#txt {
+#txt { /* 消息外框（大框） */
     width: 60%;
     height: 85%;
     position: fixed;
@@ -75,7 +75,7 @@ body{
     border-color:#337ab7;
 }
 
-#msg {
+#msg { /* 消息文本框 */
     position: absolute;
     width: 90%;
     height: 80%;
@@ -98,7 +98,7 @@ body{
     background-color: rgba(255, 255, 255, 0.808);
 }
 
-#det {
+#det { /* 设置 */
     position: absolute;
     left: 101%;
     width: 300px;
@@ -106,7 +106,7 @@ body{
     
 }
 
-#new_nickname {
+#new_nickname { /* 昵称输入框 */
     border-bottom: 2px solid #ccc !important;
     padding: 3px;
     border-color: #f44336 !important;
@@ -117,7 +117,7 @@ body{
     font-size: 15px
 }
 
-#change {
+#change { /* 改名按钮 */
     width: 60px;
     height: 30px;
     right: 40px;
@@ -133,7 +133,7 @@ body{
     color: white;
 }
 
-#change:hover{
+#change:hover {
     background: #e4e4e4;
     color: black;
     box-shadow: rgba(0, 0, 0, .3) 0 5px 10px;
@@ -147,10 +147,10 @@ body{
     position: absolute;
     top: 101%;
 }
-#conn_list{
+#conn_list { /* 用户列表 */
     right: 0;
 }
-#conn_list_parent {
+#conn_list_parent { /* 用户列表外框 */
     position:absolute;
     
     right: 0;
@@ -171,7 +171,7 @@ body{
     background-color: #e7e9ebea;
 }
 
-#change_name{
+#settings{ /* 设置 */
     position: relative;
     background: #72baf8;
     padding: 10px;
@@ -179,16 +179,16 @@ body{
     cursor: pointer;
     transition: all .25s;
 }
-#change_name:hover{
+#settings:hover{
     background: #ccc;
     color: black;
 }
 
-#change_parent{
+#change_parent{ /* 改名外div */
     text-align: center;
 }
 
-#connect{
+#connect{ /* 连接按钮 */
     position: relative;
     background: #72baf8;
     padding: 10px;
@@ -200,7 +200,7 @@ body{
     background: #ccc;
     color: black;
 }
-#disconnect{
+#disconnect{ /* 断连按钮 */
     position: relative;
     background: #72baf8;
     padding: 10px;
@@ -212,7 +212,7 @@ body{
     background: #ccc;
     color: black;
 }
-input{
+input{ /* 所有输入框统一格式 */
     background-color: white;
     transition: all .25s;
 
