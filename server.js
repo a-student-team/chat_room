@@ -8,6 +8,8 @@ var user = 0;
 var uuid = {};
 var conns = {};
 var names = {};
+var month = [1,2,3,4,5,6,7,8,9,10,11,12];
+
 
 // 创建一个连接
 var server = ws.createServer(function (conn) {
@@ -17,13 +19,18 @@ var server = ws.createServer(function (conn) {
     conn.nickname = "user" + user;
     var mes = {}; // 消息
     var nm = {}; // 昵称
+    var timestring;
+    var time;
     var id = c_uid(); // uuid
     conn.id = id;
     uuid[id] = conn;
     conns[conn] = id;
     names[id] = conn.nickname;
     mes.type = "enter";
-    mes.data = {"nick name": conn.nickname , "message": " 进来了"};
+    time = new Date();
+    timestring = month[time.getMonth()] + "-" + time.getDate() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+
+    mes.data = {"nick name": conn.nickname , "message": " 进来了", "time":timestring};
     broadcast(JSON.stringify(mes)); // 广播进入消息 
     nm.type = "name"
     nm.data = conn.nickname;
@@ -39,6 +46,8 @@ var server = ws.createServer(function (conn) {
     conn.on("text", function (str) {
         var nm = {};
         var mes = {};
+        var timestring;
+        var time;
         try {
             var js = JSON.parse(str);
         } catch (err){
@@ -46,6 +55,9 @@ var server = ws.createServer(function (conn) {
             console.log(err);
             return 0;
         }
+        time = new Date();
+        timestring = month[time.getMonth()] + "-" + time.getDate() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+
         if (js["type"] == 'nick name') {
             nickname = conn.nickname;
             conn.nickname = js["value"];
@@ -55,7 +67,7 @@ var server = ws.createServer(function (conn) {
             nm.data = conn.nickname;
             names[conn.id] = conn.nickname;
             conn.sendText(JSON.stringify(nm));
-            mes.data = {"nick name" : nickname, "message" :conn.nickname};
+            mes.data = {"nick name" : nickname, "message" :conn.nickname, "time":timestring};
             broadcast(JSON.stringify(mes));
             mes.type = "list";
             mes.data = names;
@@ -64,7 +76,7 @@ var server = ws.createServer(function (conn) {
             
             console.log("回复 " + js["value"]);
             mes.type = "message";
-            mes.data = {"nick name": conn.nickname , "message" : js["value"]};
+            mes.data = {"nick name": conn.nickname , "message" : js["value"], "time":timestring};
             broadcast(JSON.stringify(mes));
         }
     });
@@ -73,7 +85,7 @@ var server = ws.createServer(function (conn) {
     conn.on("close", function (code, reason) {
         console.log("关闭连接");
         mes.type = "leave";
-        mes.data = {"nick name":conn.nickname ,"message": " 离开了"};
+        mes.data = {"nick name":conn.nickname ,"message": " 离开了", "time":timestring};
         delete uuid[conns[conn]];
         delete conns[conn];
         delete names[id]

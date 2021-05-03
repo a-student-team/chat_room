@@ -16,23 +16,26 @@ function showMessage(data, type) {
         for (var i in data){
             ch = $("<div></div>").html(data[i])
             $("#conn_list").append(ch);
-
         }
     } else {
      
         var div = $("<div></div>");
-        
+        var time_div = $("<div></div>");
+        var message_div = $("<div></div>");
+        time_div.css({"color": "rgba(20, 20, 20, 0.7)", "font-size":"8px"})
         if (type == "enter") {
-            div.css("color","blue")
-            div.html(data["nick name"]+ "进来了");
+            message_div.css("color","blue")
+            message_div.html(data["nick name"]+ "进来了");
         } else if (type == "leave") {
-            div.css("color","red")
-            div.html(data["nick name"]+ "离开了")
+            message_div.css("color","red")
+            message_div.html(data["nick name"]+ "离开了")
         } else if (type == "change name") {
-            div.html(data["nick name"] + "将昵称改为" + data["message"])
+            message_div.html(data["nick name"] + "将昵称改为" + data["message"])
         } else {
-            div.html(data["nick name"] + " 说： " + data["message"])
+            message_div.html(data["nick name"] + " 说： " + data["message"])
         }
+        div.append(time_div);
+        div.append(message_div);
         let msg = $('#msg');
         msg.append(div);
         msg.scrollTop(document.getElementById("msg").scrollHeight); 
