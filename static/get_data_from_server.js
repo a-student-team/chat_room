@@ -37,8 +37,6 @@ function showMessage(data, type) {
 }
 
 //新建一个websocket
-websocket = new WebSocket("ws://www.dage.world:3101");
-lockOfConn = true;
 //打开websocket连接
 function createConnection() {
     if (!lockOfConn) {
@@ -64,6 +62,7 @@ function createConnection() {
 
     }
 }
+
 
 function closeConnection()
 {
@@ -100,5 +99,4 @@ $("#sendMsg").keydown (function (event) {
     }
 })
 
-//关闭连接
-
+createConnection();
