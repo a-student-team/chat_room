@@ -5,7 +5,9 @@ body{
 
 #title{
     background-color: rgba(11, 122, 226, 0.849);
-    text-align: center;
+    text-align: left;
+    padding: 10px;
+    color: white;
 }
 
 #app {
@@ -13,8 +15,9 @@ body{
     height: 40px;
     position: absolute;
     left: 0;
-    right: 0;
-    bottom: 10px;
+    
+    bottom: 25px;
+    left: 20px;
     margin: auto;
     font-size: 16px;
 }
@@ -63,15 +66,10 @@ body{
 }
 
 #txt {
-    width: 42%;
-    height: 70%;
+    width: 60%;
+    height: 85%;
     position: fixed;
-    margin: auto;
-    border-style: double;
     left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
     font-size: 16px;
     background-color: #aab7c498;
     border-color:#337ab7;
@@ -79,14 +77,14 @@ body{
 
 #msg {
     position: absolute;
-    width: 74%;
-    height: 75%;
-    margin: auto;
+    width: 90%;
+    height: 80%;
+    
     border: 0px solid #ccc !important;
     padding: 14px;
-    border-radius: 16px !important;
+    
     bottom: 50px;
-    left: 0;
+    left: 20px;
     right: 0;
     top: 5px;
     overflow-x: auto;
@@ -105,6 +103,7 @@ body{
     left: 101%;
     width: 300px;
     background: #72baf8;
+    
 }
 
 #new_nickname {
@@ -150,20 +149,19 @@ body{
 }
 
 #conn_list {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 15%;
+    position:absolute;
+    
+    right: 0;
+    width: 15%;
+    height: 100%;
+    
+
     padding-left: 5px;
     padding-top: 4px;
     margin: auto;
     overflow-x: auto;
     overflow-y: auto;
-    border-color:#337ab7;
-    border-style: solid;
-    border-width: 1px;
-    height: 300px;
-    width: 150px;
+
     background-color:#e7e9ebd7;
 
 
@@ -184,4 +182,37 @@ body{
 
 #change_parent{
     text-align: center;
+}
+
+#connect{
+    position: relative;
+    background: #72baf8;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all .25s;
+}
+#connect:hover{
+    background: #ccc;
+    color: black;
+}
+#disconnect{
+    position: relative;
+    background: #72baf8;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all .25s;
+}
+#disconnect:hover{
+    background: #ccc;
+    color: black;
+}
+input{
+    background-color: white;
+    transition: all .25s;
+
+}
+input:hover{
+    background-color: rgb(209, 209, 209);
 }
