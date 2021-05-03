@@ -1,3 +1,5 @@
+const { lock } = require("lockfile");
+
 //在页面显示聊天内容
 var uuid;
 var websocket;
@@ -50,6 +52,8 @@ $(document).ready(function(){
                 console.log("websocket close");
                 lockOfConn = false;
                 clearInterval();
+                $("conn_list").empty();
+                $("name").html("");
             }
             //接收服务器返回的数据
             websocket.onmessage = function (e) {
@@ -60,7 +64,7 @@ $(document).ready(function(){
             
             console.log('已经连上服务器----')
 
-        }
+        } else {alert("现在已经连接了！")}
     }
 
 
@@ -68,10 +72,11 @@ $(document).ready(function(){
     {
         if (lockOfConn) {
             websocket.close();
-        }
+        } else {alert("现在已经断开了！");}
     }
 
     function send() {
+        if (!lockOfConn) return 1;
         var txt = $("#sendMsg").val();
         if (txt) {
             //向服务器发送数据
@@ -80,16 +85,19 @@ $(document).ready(function(){
         } else {
             warning_prompt("消息不能为空")
         }
+        return 0;
     }
 
 
     $("#change").click(function () {
+        if (!lockOfConn) return 1;
         let new_name = $("#new_nickname");
         if (new_name.val() == "") {
             warning_prompt("昵称不能为空！")
         } else {
             websocket.send(JSON.stringify({"type":"nick name","value": new_name.val(), "uuid": uuid}))
         }
+        return 0;
     })
 
     $("#submitBtn").click(send);
@@ -98,6 +106,7 @@ $(document).ready(function(){
             send();
         }
     })
-
+    $("#connect").click(createConnection);
+    $("#disconnect").click(closeConnection);
     createConnection();
 });
