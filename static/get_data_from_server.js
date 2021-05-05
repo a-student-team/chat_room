@@ -4,7 +4,7 @@ var websocket;
 var lockOfConn = false;
 var intv;
 var first_con = false;
-function showMessage(data, type, x=0) {
+function showMessage(data, type, x) {
     if (type == "name") {
         $("#name").html(data);
     } else if (type == "uuid") {
@@ -38,7 +38,7 @@ function showMessage(data, type, x=0) {
         div.append(message_div);
         div.append("<br/>")
         let msg = $('#msg');
-        if (x = 0) {
+        if (x == 0) {
             msg.append(div);
         } else {
             msg.prepend(div);
@@ -77,10 +77,10 @@ $(document).ready(function(){
                 var mes = JSON.parse(e.data);
                 
                 if (mes.type == "old message") {
-                    mes.data.forEach (function (data){showMessage(data.data, data.type,  x = 1);})
+                    mes.data.forEach (function (data){showMessage(data.data, data.type,1);})
                     console.log(mes)
                 } else 
-                {showMessage(mes.data, mes.type);}
+                {showMessage(mes.data, mes.type,0);}
             }
             
             console.log('已经连上服务器----')

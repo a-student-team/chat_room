@@ -1,6 +1,7 @@
 var ws = require("nodejs-websocket");
 var express = require("express");
 var c_uid = require("uuid");
+const { nativeSync } = require("mkdirp");
 var app = express();
 var port = 3101;
 var user = 0;
@@ -76,10 +77,11 @@ var server = ws.createServer(function (conn) {
             names[conn.id] = conn.nickname;
             conn.sendText(JSON.stringify(nm));
             mes.data = {"nick name" : nickname, "message" :conn.nickname, "time":timestring};
+            messages.unshift({"data":mes.data, "type": mes.type});
+
             broadcast(JSON.stringify(mes));
             mes.type = "list";
             mes.data = names;
-            messages.unshift(mes);
             broadcast(JSON.stringify(mes));
         } else if (js["type"] == 'message') {
             
