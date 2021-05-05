@@ -17,24 +17,25 @@ function showMessage(data, type, x) {
             $("#conn_list").append(ch);
         }
     } else {
-     
         var div = $("<div></div>");
-        var time_div = $("<div></div>");
         var message_div = $("<div></div>");
-        time_div.css({"color": "rgba(20, 20, 20, 0.7)", "font-size":"8px"});
-        time_div.text(data["time"]);
         if (type == "enter") {
-            message_div.css("color","blue")
+            message_div.css({"color":"rgba(0,0,255,0.8)","text-align":"center"});
             message_div.html(data["nick name"]+ "进来了");
         } else if (type == "leave") {
-            message_div.css("color","red")
-            message_div.html(data["nick name"]+ "离开了")
+            message_div.css({"color":"rgba(255,0,0,0.8)","text-align":"center"});
+            message_div.html(data["nick name"]+ "离开了");
         } else if (type == "change name") {
-            message_div.html(data["nick name"] + "将昵称改为" + data["message"])
+            message_div.css({"text-align":"center"});
+            message_div.html(data["nick name"] + "将昵称改为" + data["message"]);
         } else {
-            message_div.html(data["nick name"] + " 说： " + data["message"])
+            message_div.html(data["message"]);
+            message_div.css({"position":"absolute","left":"40px"})
+            var time_div = $("<div></div>");
+            time_div.css({"color": "rgba(20, 20, 20, 0.7)", "font-size":"13px"});
+            time_div.html(`<span style="color: blue">${data["nick name"]}</span>  `+ data["time"]);
+            div.append(time_div);
         }
-        div.append(time_div);
         div.append(message_div);
         div.append("<br/>")
         let msg = $('#msg');

@@ -96,6 +96,7 @@ var server = ws.createServer(function (conn) {
             conn.sendText(JSON.stringify(mes));
             messages.unshift(mes2);
         }
+        if (messages.length > 100) {for (var x = messages.length - 100;x > 0;x--) messages.pop()}
     });
 
     //监听关闭连接操作
