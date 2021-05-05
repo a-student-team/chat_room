@@ -4,7 +4,7 @@ var websocket;
 var lockOfConn = false;
 var intv;
 var first_con = false;
-function showMessage(data, type) {
+function showMessage(data, type, x=0) {
     if (type == "name") {
         $("#name").html(data);
     } else if (type == "uuid") {
@@ -36,9 +36,13 @@ function showMessage(data, type) {
         }
         div.append(time_div);
         div.append(message_div);
+        div.append("<br/>")
         let msg = $('#msg');
-        msg.append(div);
-        msg.append("<br/>");
+        if (x = 0) {
+            msg.append(div);
+        } else {
+            msg.prepend(div);
+        }
         msg.scrollTop(document.getElementById("msg").scrollHeight); 
     }
 }
@@ -71,8 +75,10 @@ $(document).ready(function(){
             //接收服务器返回的数据
             websocket.onmessage = function (e) {
                 var mes = JSON.parse(e.data);
+                
                 if (mes.type == "old message") {
-                    for (var data in mes.data) {showMessage(data.data, data.type);}
+                    mes.data.forEach (function (data){showMessage(data.data, data.type,  x = 1);})
+                    console.log(mes)
                 } else 
                 {showMessage(mes.data, mes.type);}
             }

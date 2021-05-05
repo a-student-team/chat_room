@@ -36,7 +36,9 @@ var server = ws.createServer(function (conn) {
     timestring = check_time(month[time.getMonth()]) + "-" + check_time(time.getDate()) + " " + check_time(time.getHours()) + ":" + check_time(time.getMinutes()) + ":" + check_time(time.getSeconds());
 
     mes.data = {"nick name": conn.nickname , "message": " 进来了", "time":timestring};
-    messages.push(mes);
+    var mes2 = {};
+    mes2.data = mes.data;
+    mes2.type = mes.type;
     broadcast(JSON.stringify(mes)); // 广播进入消息 
     nm.type = "name"
     nm.data = conn.nickname;
@@ -77,19 +79,20 @@ var server = ws.createServer(function (conn) {
             broadcast(JSON.stringify(mes));
             mes.type = "list";
             mes.data = names;
-            messages.push(mes);
+            messages.unshift(mes);
             broadcast(JSON.stringify(mes));
         } else if (js["type"] == 'message') {
             
             console.log("回复 " + js["value"]);
             mes.type = "message";
             mes.data = {"nick name": conn.nickname , "message" : js["value"], "time":timestring};
-            messages.push(mes);
+            messages.unshift(mes);
             broadcast(JSON.stringify(mes));
         } else if (js["type"] == 'get old message') {
             mes.type = "old message";
             mes.data = messages;
             conn.sendText(JSON.stringify(mes));
+            messages.unshift(mes2);
         }
     });
 
@@ -104,7 +107,8 @@ var server = ws.createServer(function (conn) {
         delete uuid[conns[conn]];
         delete conns[conn];
         delete names[id]
-        messages.push(mes);
+        messages.unshift({"data": mes.data, "type": mes.type});
+        
         broadcast(JSON.stringify(mes));
         mes.type = "list"
         mes.data = names
