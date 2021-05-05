@@ -1,10 +1,9 @@
-
-
 //在页面显示聊天内容
 var uuid;
 var websocket;
 var lockOfConn = false;
 var intv;
+var first_con = false;
 function showMessage(data, type) {
     if (type == "name") {
         $("#name").html(data);
@@ -49,10 +48,15 @@ $(document).ready(function(){
     function createConnection() {
         if (!lockOfConn) {
             websocket = new WebSocket("ws://www.dage.world:3101");
+            
             websocket.onopen = function () {
                 lockOfConn = true;
                 intv = setInterval(function () {console.log("aaa");websocket.send(JSON.stringify({"type": "heart", value: "", "uuid": uuid}));}, 5000);
                 $("#state").text("在线");
+                if (!first_con) {
+                    websocket.send(JSON.stringify({"type": "get old message","value":"","uuid": uuid}))
+                    first_con = true;
+                }
             }
             
             websocket.onclose = function () {
@@ -67,8 +71,10 @@ $(document).ready(function(){
             //接收服务器返回的数据
             websocket.onmessage = function (e) {
                 var mes = JSON.parse(e.data);
-                
-                showMessage(mes.data, mes.type);
+                if (mes.type == "old message") {
+                    for (var data in mes.data) {showMessage(data.data, data.type);}
+                } else 
+                {showMessage(mes.data, mes.type);}
             }
             
             console.log('已经连上服务器----')

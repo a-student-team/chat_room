@@ -1,7 +1,6 @@
 var ws = require("nodejs-websocket");
 var express = require("express");
 var c_uid = require("uuid");
-const { maxRecordSize } = require("npmlog");
 var app = express();
 var port = 3101;
 var user = 0;
@@ -9,6 +8,8 @@ var uuid = {};
 var conns = {};
 var names = {};
 var month = [1,2,3,4,5,6,7,8,9,10,11,12];
+var messages = [];
+
 function check_time(i){
     if (i < 10) return "0" + i;
     else return i;
@@ -35,6 +36,7 @@ var server = ws.createServer(function (conn) {
     timestring = check_time(month[time.getMonth()]) + "-" + check_time(time.getDate()) + " " + check_time(time.getHours()) + ":" + check_time(time.getMinutes()) + ":" + check_time(time.getSeconds());
 
     mes.data = {"nick name": conn.nickname , "message": " 进来了", "time":timestring};
+    messages.push(mes);
     broadcast(JSON.stringify(mes)); // 广播进入消息 
     nm.type = "name"
     nm.data = conn.nickname;
@@ -75,13 +77,19 @@ var server = ws.createServer(function (conn) {
             broadcast(JSON.stringify(mes));
             mes.type = "list";
             mes.data = names;
+            messages.push(mes);
             broadcast(JSON.stringify(mes));
         } else if (js["type"] == 'message') {
             
             console.log("回复 " + js["value"]);
             mes.type = "message";
             mes.data = {"nick name": conn.nickname , "message" : js["value"], "time":timestring};
+            messages.push(mes);
             broadcast(JSON.stringify(mes));
+        } else if (js["type"] == 'get old message') {
+            mes.type = "old message";
+            mes.data = messages;
+            conn.sendText(JSON.stringify(mes));
         }
     });
 
@@ -96,6 +104,7 @@ var server = ws.createServer(function (conn) {
         delete uuid[conns[conn]];
         delete conns[conn];
         delete names[id]
+        messages.push(mes);
         broadcast(JSON.stringify(mes));
         mes.type = "list"
         mes.data = names
