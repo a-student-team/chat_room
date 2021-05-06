@@ -20,19 +20,19 @@ function showMessage(data, type, x) {
         var div = $("<div></div>");
         var message_div = $("<div></div>");
         if (type == "enter") {
-            message_div.css({"color":"rgba(0,0,255,0.8)","text-align":"center"});
+            message_div.css({"color":"rgba(0,0,255,0.8)","text-align":"center", "font-size":"14px"});
             message_div.html(data["nick name"]+ "进来了");
         } else if (type == "leave") {
-            message_div.css({"color":"rgba(255,0,0,0.8)","text-align":"center"});
+            message_div.css({"color":"rgba(255,0,0,0.8)","text-align":"center", "font-size":"14px"});
             message_div.html(data["nick name"]+ "离开了");
         } else if (type == "change name") {
-            message_div.css({"text-align":"center"});
+            message_div.css({"text-align":"center", "font-size":"14px   !important"});
             message_div.html(data["nick name"] + "将昵称改为" + data["message"]);
         } else {
             message_div.html(data["message"]);
             message_div.css({"position":"absolute","left":"40px"})
             var time_div = $("<div></div>");
-            time_div.css({"color": "rgba(20, 20, 20, 0.7)", "font-size":"13px"});
+            time_div.css({"color": "rgba(20, 20, 20, 0.7)", "font-size":"11px"});
             time_div.html(`<span style="color: blue">${data["nick name"]}</span>  `+ data["time"]);
             div.append(time_div);
         }
