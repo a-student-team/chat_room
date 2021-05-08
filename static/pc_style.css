@@ -1,14 +1,26 @@
 body {
     user-select: none;
-    background: url(https://cn.bing.com/th?id=OHR.LassenPeak_ZH-CN5435067682_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp);
+    /*background-color: rgb(235, 235, 235);*/
+    background-image: url(https://z3.ax1x.com/2021/05/08/gJkwrt.png);
+    background-size:cover;
+      
 }
 
 
 #title{ /* 页面标题 */
-    background-color: rgba(11, 122, 226, 0.849);
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.888);
     text-align: left;
     padding: 10px;
-    color: white;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    transition: all .25s;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 5px 10px;
+}
+#title:hover, #txt:hover, #conn_list_parent:hover{
+
+    box-shadow: rgba(0, 0, 0, .3) 0 5px 10px;
+    background-color: rgba(255, 255, 255, 0.459);
 }
 
 #app { /* 发送、输入div */
@@ -69,12 +81,14 @@ body {
 
 #txt { /* 消息外框（大框） */
     width: 60%;
-    height: 85%;
-    position: fixed;
+    height: 84%;
+    position:fixed;
     left: 0;
+    top:15%;
     font-size: 16px;
-    background-color: #aab7c498;
-    border-color: #337ab7;
+    background-color: rgba(255, 255, 255, 0.888);
+    border-radius: 10px;
+    transition: all .25s;
 }
 
 #msg { /* 消息文本框 */
@@ -101,10 +115,12 @@ body {
 }
 
 #det { /* 设置 */
-    position: absolute;
+    position: relative;
     left: 101%;
     width: 300px;
-    background: #72baf8;
+    background: rgba(255, 255, 255, 0.888);
+    border-radius: 10px;
+    transition: all .25s;
 
 }
 
@@ -152,37 +168,39 @@ body {
     right: 0;
 }
 #conn_list_parent { /* 用户列表外框 */
-    position:absolute;
+    position:fixed;
     
     right: 0;
     width: 15%;
     height: 80%;
 
-
+    padding: auto;
     padding-left: 5px;
-    padding-top: 4px;
+    top:15%;
     margin: auto;
     overflow-x: auto;
     overflow-y: auto;
+    border-radius: 10px;
+    border: 1px;
 
-    background-color: #e7e9eb8e;
+    background-color: rgba(255, 255, 255, 0.888);
     transition: all .25s;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 5px 10px;
 }
 
-#conn_list_parent:hover {
-    background-color: #e7e9ebea;
-}
 
 #settings{ /* 设置 */
     position: relative;
-    background: #72baf8;
+    background: rgba(255, 255, 255, 0.888);
     padding: 10px;
-    color: white;
+    color: rgb(0, 0, 0);
     cursor: pointer;
     transition: all .25s;
+    border-radius: 10px;
 }
-#settings:hover{
-    background: #ccc;
+#settings:hover, #det:hover{
+    box-shadow: rgba(0, 0, 0, 0.3) 0 5px 10px;
+    background: rgba(255, 255, 255, 0.459);
     color: black;
 }
 
@@ -192,30 +210,26 @@ body {
 
 #connect{ /* 连接按钮 */
     position: relative;
-    background: #72baf8;
+    background: rgba(255, 255, 255, 0.808);
     padding: 10px;
-    color: white;
+    color: rgb(0, 0, 0);
     cursor: pointer;
     transition: all .25s;
 }
 
-#connect:hover {
-    background: #ccc;
-    color: black;
+#connect:hover, #disconnect:hover {
+    background: rgb(201, 201, 201);
+    color: rgb(255, 255, 255);
 }
 #disconnect{ /* 断连按钮 */
     position: relative;
-    background: #72baf8;
+    background: rgba(255, 255, 255, 0.808);
     padding: 10px;
-    color: white;
+    color: rgb(0, 0, 0);
     cursor: pointer;
     transition: all .25s;
 }
 
-#disconnect:hover {
-    background: #ccc;
-    color: black;
-}
 
 #state{
     font-size: 16px;
