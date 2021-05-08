@@ -28,13 +28,15 @@ function showMessage(data, type, x) {
         } else if (type == "change name") {
             message_div.css({"text-align":"center", "font-size":"14px   !important"});
             message_div.html(data["nick name"] + "将昵称改为" + data["message"]);
-        } else {
+        } else if (type == "message"){
             message_div.html(data["message"]);
             message_div.css({"position":"absolute","left":"40px"})
             var time_div = $("<div></div>");
             time_div.css({"color": "rgba(20, 20, 20, 0.7)", "font-size":"11px"});
             time_div.html(`<span style="color: blue">${data["nick name"]}</span>  `+ data["time"]);
             div.append(time_div);
+            $("#chat_audio")[0].play()
+
         }
         div.append(message_div);
         div.append("<br/>")
@@ -50,6 +52,7 @@ function showMessage(data, type, x) {
 $(document).ready(function(){
     //新建一个websocket
     //打开websocket连接
+    $('<audio id="chat_audio"><source src="./notify.mp3" type="audio/mpeg"><source src="./notify.wav" type="audio/ogg"></audio>').appendTo("body");
     function createConnection() {
         if (!lockOfConn) {
             websocket = new WebSocket("ws://www.dage.world:3101");
