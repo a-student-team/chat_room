@@ -34,8 +34,8 @@ function showMessage(data, type, x) {
             var time_div = $("<div></div>");
             time_div.css({"color": "rgba(20, 20, 20, 0.7)", "font-size":"11px"});
             time_div.html(`<span style="color: blue">${data["nick name"]}</span>  `+ data["time"]);
+            if (data["uuid" != uuid]) $("#chat_audio")[0].play();
             div.append(time_div);
-            $("#chat_audio")[0].play()
 
         }
         div.append(message_div);
