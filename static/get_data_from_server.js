@@ -30,7 +30,7 @@ function showMessage(data, type, x) {
             message_div.html(data["nick name"] + "将昵称改为" + data["message"]);
         } else if (type == "message"){
             message_div.html(data["message"]);
-            message_div.css({"position":"absolute","left":"40px"})
+            message_div.css({"position":"relative","left":"20px"})
             var time_div = $("<div></div>");
             time_div.css({"color": "rgba(20, 20, 20, 0.7)", "font-size":"11px"});
             time_div.html(`<span style="color: blue">${data["nick name"]}</span>  `+ data["time"]);
