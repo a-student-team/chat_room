@@ -34,7 +34,7 @@ function showMessage(data, type, x) {
             var time_div = $("<div></div>");
             time_div.css({"color": "rgba(20, 20, 20, 0.7)", "font-size":"11px"});
             time_div.html(`<span style="color: blue">${data["nick name"]}</span>  `+ data["time"]);
-            if (data["uuid" != uuid]) $("#chat_audio")[0].play();
+            if (data["uuid"] != uuid) {$("#chat_audio")[0].play();}
             div.append(time_div);
 
         }
@@ -52,7 +52,7 @@ function showMessage(data, type, x) {
 $(document).ready(function(){
     //新建一个websocket
     //打开websocket连接
-    $('<audio id="chat_audio"><source src="./notify.mp3" type="audio/mpeg"><source src="./notify.wav" type="audio/ogg"></audio>').appendTo("body");
+    $('<audio id="chat_audio"><source src="./notify.mp3" type="audio/mpeg"><source src="./notify.wav" type="audio/wav"></audio>').appendTo("body");
     function createConnection() {
         if (!lockOfConn) {
             websocket = new WebSocket("ws://www.dage.world:3101");
