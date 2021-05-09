@@ -36,7 +36,7 @@ var server = ws.createServer(function (conn) {
     time = new Date();
     timestring = check_time(month[time.getMonth()]) + "-" + check_time(time.getDate()) + " " + check_time(time.getHours()) + ":" + check_time(time.getMinutes()) + ":" + check_time(time.getSeconds());
 
-    mes.data = {"nick name": conn.nickname , "message": " 进来了", "time":timestring};
+    mes.data = {"nick name": conn.nickname , "message": " 进来了", "time":timestring, "uuid": conn.id};
     var mes2 = {};
     mes2.data = mes.data;
     mes2.type = mes.type;
@@ -76,7 +76,7 @@ var server = ws.createServer(function (conn) {
             nm.data = conn.nickname;
             names[conn.id] = conn.nickname;
             conn.sendText(JSON.stringify(nm));
-            mes.data = {"nick name" : nickname, "message" :conn.nickname, "time":timestring};
+            mes.data = {"nick name" : nickname, "message" :conn.nickname, "time":timestring, "uuid": conn.id};
             messages.unshift({"data":mes.data, "type": mes.type});
 
             broadcast(JSON.stringify(mes));
@@ -87,7 +87,7 @@ var server = ws.createServer(function (conn) {
             
             console.log("回复 " + js["value"]);
             mes.type = "message";
-            mes.data = {"nick name": conn.nickname , "message" : js["value"], "time":timestring};
+            mes.data = {"nick name": conn.nickname , "message" : js["value"], "time":timestring, "uuid": conn.id};
             messages.unshift(mes);
             broadcast(JSON.stringify(mes));
         } else if (js["type"] == 'get old message') {
@@ -106,7 +106,7 @@ var server = ws.createServer(function (conn) {
         time = new Date();
         timestring = check_time(month[time.getMonth()]) + "-" + check_time(time.getDate()) + " " + check_time(time.getHours()) + ":" + check_time(time.getMinutes()) + ":" + check_time(time.getSeconds());
 
-        mes.data = {"nick name":conn.nickname ,"message": " 离开了", "time":timestring};
+        mes.data = {"nick name":conn.nickname ,"message": " 离开了", "time":timestring, "uuid": conn.id};
         delete uuid[conns[conn]];
         delete conns[conn];
         delete names[id]
@@ -130,6 +130,8 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + "/index.html");
 });
 
+app.get('/notify.wav', function (req, res){res.sendFile(__dirname + "/notify.wav")})
+app.get('/notify.mp3', function (req, res){res.sendFile(__dirname + "/notify.mp3")})
 app.use('/static', express.static("static"));
 
 var svr = app.listen(3000, function () {
