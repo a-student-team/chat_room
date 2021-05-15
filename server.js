@@ -47,7 +47,7 @@ var server = ws.createServer(function (conn) {
     // conn.sendText(conn.nickname)
     // 向客户端推送消息
     nm.type = "uuid";
-    nm.dat = id;
+    nm.data = id;
     conn.sendText(JSON.stringify(nm)); // 向客户端发送uuid
     mes.type = "list";
     mes.data = names;
