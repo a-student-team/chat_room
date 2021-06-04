@@ -1,7 +1,6 @@
 var ws = require("nodejs-websocket");
 var express = require("express");
 var c_uid = require("uuid");
-const { nativeSync } = require("mkdirp");
 var app = express();
 var port = 3101;
 var user = 0;
@@ -133,6 +132,7 @@ app.get('/', function (req, res) {
 app.get('/notify.wav', function (req, res){res.sendFile(__dirname + "/notify.wav")})
 app.get('/notify.mp3', function (req, res){res.sendFile(__dirname + "/notify.mp3")})
 app.use('/static', express.static("static"));
+app.use('/source', express.static("source"));
 
 var svr = app.listen(3000, function () {
     var host = svr.address().address;
